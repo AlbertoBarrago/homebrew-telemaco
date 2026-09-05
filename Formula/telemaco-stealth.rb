@@ -1,17 +1,17 @@
 class TelemacoStealth < Formula
   desc "Headless browser engine in Rust with stealth anti-fingerprinting"
   homepage "https://github.com/AlbertoBarrago/telemaco"
-  url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.1.3/telemaco-aarch64-macos-stealth.tar.gz"
-  sha256 "bce176d2c40cef3e9784806dd8fa00f79aafe5af1458b853f0162170c24f1718"
+  url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.2.0/telemaco-aarch64-macos-stealth.tar.gz"
+  sha256 "ad61282fce2b74825b6b73d8f23b7490e26d0011ef9f06b33e0eb94c019f9eae"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.1.3/telemaco-aarch64-macos-stealth.tar.gz"
-      sha256 "bce176d2c40cef3e9784806dd8fa00f79aafe5af1458b853f0162170c24f1718"
+      url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.2.0/telemaco-aarch64-macos-stealth.tar.gz"
+      sha256 "b22ac46d18801adc05a830d6badfbcc33ec1cacc4ca4ccfe40c0f28f26e31b53"
     end
     on_intel do
-      url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.1.3/telemaco-x86_64-macos-stealth.tar.gz"
+      url "https://github.com/AlbertoBarrago/telemaco/releases/download/v0.2.0/telemaco-x86_64-macos-stealth.tar.gz"
       sha256 "574181afeeae0fc331a18754e1217be93bb0505c8e4435b5a3af9ef095f979ee"
     end
   end
