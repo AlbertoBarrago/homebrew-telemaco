@@ -13,10 +13,11 @@ The default formula installs the render-enabled binary (full DOM, layout, screen
 
 ## Stealth build
 
-The stealth variant adds anti-fingerprinting (wreq/BoringSSL transport, fingerprint protections, tracker blocklist). Install it with:
+The stealth variant adds anti-fingerprinting (wreq/BoringSSL transport, fingerprint protections, tracker blocklist). It installs the binary as `telemaco-stealth` so it can coexist with the default build. Install it with:
 
 ```sh
 brew install telemaco-stealth
+telemaco-stealth --stealth fetch https://example.com --dump text
 ```
 
 ## Usage

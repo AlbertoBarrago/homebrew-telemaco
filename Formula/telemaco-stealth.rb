@@ -17,11 +17,11 @@ class TelemacoStealth < Formula
   end
 
   def install
-    bin.install "telemaco"
-    bin.install "telemaco-worker"
+    bin.install "telemaco" => "telemaco-stealth"
+    bin.install "telemaco-worker" => "telemaco-worker-stealth"
   end
 
   test do
-    assert_match "telemaco", shell_output("#{bin}/telemaco --help")
+    assert_match "telemaco", shell_output("#{bin}/telemaco-stealth --help")
   end
 end
