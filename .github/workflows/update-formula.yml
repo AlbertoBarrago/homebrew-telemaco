@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   repository_dispatch:
     types: [release]
+  schedule:
+    # Poll for new telemaco releases. The workflow only commits when the
+    # resolved tag differs from what the formulas already point at, so an
+    # empty poll is a no-op.
+    - cron: "17 */6 * * *"
 
 permissions:
   contents: write
