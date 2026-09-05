@@ -68,12 +68,14 @@ jobs:
               text = re.sub(r"/releases/download/v[0-9.]+/", f"/releases/download/{tag}/", text)
               # Three sha256 lines in order: top-level url, on_arm, on_intel.
               # The top-level and on_arm both carry the arm checksum; on_intel
-              # carries the x86_64 one.
-              hashes = re.findall(r'sha256 "([0-9a-f]{64})"', text)
-              if len(hashes) != 3:
-                  raise SystemExit(f"expected 3 sha256 in {path}, found {len(hashes)}")
-              text = re.sub(r'sha256 "[0-9a-f]{64}"', f'sha256 "{aarch64}"', text, count=2)
-              text = re.sub(r'sha256 "[0-9a-f]{64}"', f'sha256 "{x86_64}"', text, count=1)
+              # carries the x86_64 one. Replace by position, not by count from
+              # the start, or the second pass hits the top-level line again.
+              matches = list(re.finditer(r'sha256 "([0-9a-f]{64})"', text))
+              if len(matches) != 3:
+                  raise SystemExit(f"expected 3 sha256 in {path}, found {len(matches)}")
+              text = text[:matches[0].start()] + f'sha256 "{aarch64}"' + text[matches[0].end():]
+              text = text[:matches[1].start()] + f'sha256 "{aarch64}"' + text[matches[1].end():]
+              text = text[:matches[2].start()] + f'sha256 "{x86_64}"' + text[matches[2].end():]
               with open(path, "w") as f:
                   f.write(text)
           update("Formula/telemaco.rb", a64, x64)
